@@ -1,0 +1,30 @@
+plugins {
+    id 'java'
+    id 'war'
+    id 'org.gretty' version '2.2.0'
+}
+
+group 'gradle'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    jcenter()
+    mavenCentral()
+}
+
+dependencies {
+// https://mvnrepository.com/artifact/org.glassfish.web/javax.servlet.jsp
+    runtime group: 'org.glassfish.web', name: 'javax.servlet.jsp', version: '2.3.4'
+    compile 'javax.servlet:javax.servlet-api:3.1.0'
+    compile 'javax.servlet.jsp:jsp-api:2.1'
+    runtime 'javax.servlet:jstl:1.2'
+    runtime 'taglibs:standard:1.1.2'
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    testCompile 'org.mockito:mockito-core:2.7.19'
+}
+
+gretty {
+    servletContainer = 'tomcat8'
+}
